@@ -1,0 +1,12 @@
+{
+  "title": "Find: a run ended early reports valid false",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-s-lysozyme-glu35-asp52]" },
+    { "waitFor": "[data-role=ask]" },
+    { "click": "[data-action=end]" },
+    { "click": "[data-action=confirm-end]" },
+    { "expect": "complete" }
+  ],
+  "expectResult": { "completed": false, "practice": { "version": 1, "activityId": "sl-s-lysozyme-glu35-asp52", "valid": false, "criteria": [] } }
+}

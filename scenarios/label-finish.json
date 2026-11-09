@@ -1,0 +1,22 @@
+{
+  "title": "Label: type, check, hint, finish, review",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-l-bacterial-rnap-cross-section]" },
+    { "waitFor": "[data-answer=b1]" },
+    { "fill": "[data-answer=b1]", "text": "not sure" },
+    { "fill": "[data-answer=b2]", "text": "something else" },
+    { "fill": "[data-answer=b3]", "text": "no idea" },
+    { "fill": "[data-answer=b4]", "text": "guess" },
+    { "click": "[data-action=hint][data-for=b3]" },
+    { "waitFor": "[data-row=b3] [data-role=hint]" },
+    { "click": "[data-action=check]" },
+    { "waitForText": "[data-role=feedback]", "text": "not yet" },
+    { "click": "[data-action=zoom-in]" },
+    { "click": "[data-action=finish-answering]" },
+    { "waitFor": "[data-role=extra]" },
+    { "click": "[data-action=finish]" },
+    { "expect": "complete" }
+  ],
+  "expectResult": { "completed": true, "practice": { "activityId": "sl-l-bacterial-rnap-cross-section", "valid": true, "hintsUsed": 1 } }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Label: an interrupted run comes back where it stopped",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-l-pol2-ctd-phosphorylation]" },
+    { "fill": "[data-answer=b1]", "text": "serine 5" },
+    { "wait": 1200 },
+    { "relaunch": true },
+    { "click": "[data-activity=sl-l-pol2-ctd-phosphorylation]" },
+    { "waitForText": "[data-role=resumed]", "text": "Welcome back" },
+    { "click": "[data-action=finish-answering]" },
+    { "waitFor": "[data-role=extra]" },
+    { "click": "[data-action=finish]" },
+    { "expect": "complete" }
+  ],
+  "expectResult": { "completed": true, "practice": { "activityId": "sl-l-pol2-ctd-phosphorylation" } }
+}

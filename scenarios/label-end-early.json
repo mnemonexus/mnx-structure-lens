@@ -1,0 +1,12 @@
+{
+  "title": "Label: a run ended early reports valid false",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-l-sigma-factor-domains]" },
+    { "fill": "[data-answer=b1]", "text": "region 2" },
+    { "click": "[data-action=end]" },
+    { "click": "[data-action=confirm-end]" },
+    { "expect": "complete" }
+  ],
+  "expectResult": { "completed": false, "practice": { "version": 1, "activityId": "sl-l-sigma-factor-domains", "valid": false, "criteria": [] } }
+}

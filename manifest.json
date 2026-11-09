@@ -1,0 +1,403 @@
+{
+  "schemaVersion": "mnxpack_manifest_v1",
+  "id": "structure-lens",
+  "version": "0.1.0",
+  "kind": "experience",
+  "label": "Structure Lens",
+  "description": "Practise pointing at the right thing. Name the hidden labels on the lecture's own diagrams, or turn a real 3D structure and click the feature asked for: the catalytic serine, the oxyanion hole, the rudder, the active-site metal. Private study pack built from course material and public PDB entries.",
+  "tagline": "Label the figure. Find it in the structure.",
+  "icon": "fa-solid fa-dna",
+  "author": "Private study pack for one student",
+  "subjects": [
+    "biochemistry",
+    "molecular biology",
+    "structural biology",
+    "genome expression and maintenance",
+    "biochemical reactions and interactions"
+  ],
+  "knowledgeBinding": {
+    "mode": "none"
+  },
+  "surfaces": {},
+  "practice": {
+    "version": 1,
+    "catalogue": "assets/practice/catalogue.json"
+  },
+  "permissions": [
+    "storage:local",
+    "render:3d"
+  ],
+  "settings": [
+    {
+      "id": "labelAnswers",
+      "label": "Answering a label",
+      "description": "Type each label from memory, or pick it from a word bank. Typing is the harder and better practice.",
+      "type": "choice",
+      "default": "type",
+      "options": [
+        {
+          "value": "type",
+          "label": "Type it"
+        },
+        {
+          "value": "pick",
+          "label": "Pick from a word bank"
+        }
+      ]
+    },
+    {
+      "id": "showHints",
+      "label": "Show hints",
+      "description": "Hints say what to look for, never the answer. Using one is recorded.",
+      "type": "toggle",
+      "default": true
+    },
+    {
+      "id": "lighter",
+      "label": "Lighter 3D drawing",
+      "description": "Draw structures as a thin trace. Turn this on if a large structure turns slowly.",
+      "type": "toggle",
+      "default": false
+    }
+  ],
+  "engines": {
+    "mnxSdk": "1.0.0"
+  },
+  "entry": {
+    "logicalPath": "code/main.cjs"
+  },
+  "assets": [
+    {
+      "logicalPath": "assets/practice/catalogue.json",
+      "mimeType": "application/json"
+    },
+    {
+      "logicalPath": "assets/content/labels.json",
+      "mimeType": "application/json"
+    },
+    {
+      "logicalPath": "assets/content/structures.json",
+      "mimeType": "application/json"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-bacterial-rnap-cross-section-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-bacterial-rnap-cross-section.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-base-excision-repair-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-base-excision-repair.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-cell-cycle-wheel-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-cell-cycle-wheel.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-dna-damage-response-layers-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-dna-damage-response-layers.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-dsc-instrument-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-dsc-instrument.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-ecoli-consensus-promoter-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-ecoli-consensus-promoter.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-ecoli-oric-initiation-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-ecoli-oric-initiation.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-enzyme-catalysis-energy-profile-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-enzyme-catalysis-energy-profile.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-esi-source-schematic-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-esi-source-schematic.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-flavin-coenzymes-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-flavin-coenzymes.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-fluorescence-energy-diagrams-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-fluorescence-energy-diagrams.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-fluorimeter-block-diagram-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-fluorimeter-block-diagram.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-itc-instrument-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-itc-instrument.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-mass-spectrometer-schematic-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-mass-spectrometer-schematic.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-mediator-complex-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-mediator-complex.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-mismatch-repair-ecoli-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-mismatch-repair-ecoli.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-nadph-structure-parts-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-nadph-structure-parts.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-pol2-ctd-phosphorylation-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-pol2-ctd-phosphorylation.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-preinitiation-complex-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-preinitiation-complex.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-sec-isocratic-system-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-sec-isocratic-system.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-sigma-factor-domains-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-sigma-factor-domains.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-spectrophotometer-design-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-spectrophotometer-design.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-stopped-flow-apparatus-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-stopped-flow-apparatus.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-telomerase-extension-cycle-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-telomerase-extension-cycle.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-trna-cloverleaf-full.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/fig/sl-l-trna-cloverleaf.png",
+      "mimeType": "image/png"
+    },
+    {
+      "logicalPath": "assets/structures/1ajs.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1cdw.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1cho.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1cps.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1ehz.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1emh.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1gqr.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1gyc.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1hew.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1hld.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1j1v.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1jst.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1kx5.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1oc5.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1pvo.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1qnf.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1t38.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1tro.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/1wkw.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/2j0d.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/3gwd.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/3kyl.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/3mde.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/3oxc.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/3po3.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/3tmn.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/4yg2.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/6alh.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/structures/8cho.cif",
+      "mimeType": "chemical/x-cif"
+    },
+    {
+      "logicalPath": "assets/licenses/3Dmol-LICENSE.txt",
+      "mimeType": "text/plain"
+    }
+  ]
+}

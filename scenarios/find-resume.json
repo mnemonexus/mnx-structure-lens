@@ -1,0 +1,16 @@
+{
+  "title": "Find: an interrupted run comes back where it stopped",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-s-tbp-tata-box]" },
+    { "waitFor": "[data-role=ask]" },
+    { "click": "[data-action=hint]" },
+    { "wait": 1200 },
+    { "relaunch": true },
+    { "click": "[data-activity=sl-s-tbp-tata-box]" },
+    { "waitFor": "[data-role=ask]" },
+    { "click": "[data-action=end]" },
+    { "click": "[data-action=confirm-end]" },
+    { "expect": "complete" }
+  ]
+}

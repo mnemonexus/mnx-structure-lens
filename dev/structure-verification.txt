@@ -1,0 +1,191 @@
+STRUCTURE LENS: structure verification log (2026-10-31)
+=========================================================
+PRIVATE: course-linked study material. Not for publishing.
+
+How each feature was checked
+----------------------------
+1. Every file is the unmodified mmCIF from files.rcsb.org (entry data CC0). dev/structure-lib.mjs reads auth_asym_id, auth_seq_id,
+   auth_comp_id and auth_atom_id of the first model: the same ids 3Dmol's CIF reader gives the viewer.
+2. dev/verify-structures.mjs checks, for every selector of every target: the chain exists, the residue number exists, the residue name
+   matches (single residues and ligands), run sequences match the one-letter text in the JSON, named atoms exist; plus term rules,
+   cite ids (each packet:line must be a key of that packet's lines.json or figures.json) and that no ask/hint repeats a residue number.
+   Result: "no errors" for 31 activities, 84 targets, 29 structures.
+3. Independent numbering checks against UniProt (the kind of source a reader can open): sequence of each protein chain compared with
+   the UniProt sequence at a fixed offset (matches counted), and the UniProt 'Active site / Binding site / Metal binding' features
+   mapped onto the file's residues. Offsets: UniProt = file + 0 (chymotrypsin P00766, ketosteroid isomerase P00947, Rho P0AG30,
+   RNAP beta prime P0A8T7, RNAP beta P0A8V2, sigma70 P00579, P450 3A4 P08684, DnaA P03004, photolyase P05327, MGMT P16455);
+   + 1 (liver ADH P00327, aspartate aminotransferase P00503); + 9 (UDG P13051); + 18 (lysozyme P00698); + 21 (acetylcholinesterase
+   P04058); + 25 (MCAD P41367); + 26 (Cel6A Q9C1S9); + 110 (carboxypeptidase A P00730); + 232 (thermolysin P00800).
+4. Geometry from the coordinates (distances in angstroms) where a role could be tested.
+
+Geometry and database evidence by entry
+---------------------------------------
+1CHO  alpha-chymotrypsin + turkey ovomucoid third domain (OMTKY3), X-ray 1.8 A. Chains E, F, G (chymotrypsin A, B, C chains), I (inhibitor).
+      Ser195 OG - His57 NE2 2.51; His57 ND1 - Asp102 OD1 2.76. Inhibitor P1 Leu18: C 2.95 from Ser195 OG; O 2.44 from Gly193 N and 3.32 from
+      Ser195 N (oxyanion hole). UniProt P00766 Active site 57, 102, 195 (same numbering).
+1GQR  Torpedo AChE + rivastigmine, 2.2 A. EMM 1999 (carbamoyl) bonded to Ser200 OG at 1.44; Ser200 OG - His440 NE2 4.07 (carbamoylated);
+      Glu327 is the triad acid (UniProt Active site 348 = 327), slide's Glu199 not asked. UniProt P04058: Ser221/Glu348/His461 = 200/327/440.
+1CPS  carboxypeptidase A + sulfodiimine inhibitor CPM, 2.25 A. Zn 308: His69 ND1 2.34, Glu72 OE2 2.25, His196 ND1 2.11, CPM N1 2.24.
+      UniProt P00730: Zn binding 179/182/306 = 69/72/196; Active site 380 = Glu270.
+3TMN  thermolysin + Val-Trp, 1.7 A. Zn 323: His142 NE2 2.12, His146 NE2 2.12, Glu166 OE1 2.17. UniProt P00800: Zn 374/378/398, Active site 375 = Glu143.
+3OXC  HIV-1 protease + saquinavir (ROC 401), 1.16 A. Chain A residues 1-99, chain B numbered 101-199 so Asp25' is residue 125. Chain A 25-27 DTG,
+      chain B 125-127 DTG; both Asp side chains within 4.5 of the inhibitor; OD2-OD2 5.6.
+1HEW  hen lysozyme + (NAG)3 (chain B 1-3), 1.75 A. Glu35 / Asp52 carboxylates 6.3 to 7.9 apart in this entry (slide says ~5.5). UniProt P00698 Active site 53, 70.
+1OC5  H. insolens Cel6A D405N + thio-oligosaccharide, 1.7 A. UniProt Q9C1S9 Active site 252 (proton donor) = Asp226; second annotated site 431 = Asp405
+      (Asn here). Asp226 - Asp416 carboxylate distance 8.1 to 11.0 (slide: ~11). Asp416 not asked (not confirmable from UniProt).
+8CHO  C. testosteroni KSI, 2.3 A, ligand P4C (PEG) in the pocket. UniProt P00947 Active site 14 (proton donor) and 38 (proton acceptor), same numbering; Tyr14 OH - Asp38 OD2 5.3.
+1HLD  horse liver ADH + NAD+ + pentafluorobenzyl alcohol (PFB), 2.1 A. Catalytic Zn 375: Cys46 SG 2.23, His67 NE2 2.23, Cys174 SG 2.30, PFB O1 2.04.
+      Structural Zn 376: Cys97/100/103/111 SG 2.3-2.4. Ser48 OG 2.65 from the PFB oxygen. UniProt P00327 Zn sites 47/68/175 and 98/101/104/112 = file + 1.
+2J0D  CYP3A4 + erythromycin, 2.75 A. Heme Fe - Cys442 SG 2.43. UniProt P08684: Binding site 442, axial binding residue heme. Chain A used; B hidden.
+1GYC  T. versicolor laccase, 1.9 A. Cu 1503: Cys453 SG 2.19, His395 ND1 2.02, His458 ND1 2.04 = T1; 12.3-14.7 from the others. Cu 1500 (His66, His109, His454) and
+      Cu 1501 (His111, His400, His452), 3.9 apart = T3 pair; Cu 1502 (His64, His398 only), 3.8 from each = T2.
+1AJS  pig cytosolic AAT, 1.6 A. Chain B residue 258 = LLP (PLP-lysine Schiff base); chain A PLA 415 (PLP-2-methylaspartate), free Lys258 NZ 2.87 from its C4A.
+      Chain B Arg292 NH1/NH2 2.74/2.84 from the side-chain carboxylate O of PLA; chain A Arg386 NH1/NH2 2.98/2.91 from the alpha-carboxylate (UniProt Binding site 387).
+3MDE  pig MCAD + octanoyl-CoA, 2.4 A. Flavin N5 - substrate C3' 3.01; Glu376 OE2 - C2' 4.65. UniProt P41367 Active site 401 (proton acceptor) = 376.
+3GWD  Rhodococcus CHMO closed form, 2.3 A: FAD 541, NADP 542/543 (two positions).
+6ALH  E. coli RNAP elongation complex (cryo-EM 4.4 A). Chains: G,H alpha; I beta; J beta prime; K omega; A nontemplate (22 nt); B template (29 nt); R RNA (11-20).
+      RNA 12-20 pair with template 23-15 (base N-N 2.7-2.85, nine pairs); RNA 11 unpaired and within 4.1 of Pro254 and Asp256 (lid). Mg R1501: 3' O3' 2.09,
+      Asp460 OD1 2.16, Asp462 OD2 2.16 (UniProt P0A8T7 binding sites 460/462/464). Lid range from Kang et al. 2017 (Val253, Asp256, Arg259, base Asp264).
+4YG2  E. coli sigma70 holoenzyme, 3.7 A. Chain F (94-612) = RpoD; domain 2 379-449, domain 4 547-600 from UniProt P00579; copy 2 (G-L) hidden.
+3PO3  S. cerevisiae Pol II + TFIIS (chain S), 3.3 A. Mg A2458: Asp481 OD1 2.19, Asp483 OD2 2.14, Asp485 OD1 2.11. TFIIS residues 290-291 are Ala in this entry.
+1CDW  human TBP core + TATA DNA, 1.9 A. Chain B TATAAAA 5-11, chain C TTTTATA 106-112 (complement). (1YTB was rejected: each TBP binds a single DNA strand; its partner strand is a symmetry mate.)
+1TRO  TrpR-operator, 1.9 A. Complex 1 = protein A+C with DNA I+J and the two TRP of chain A (109, 110); complex 2 = E+G with K+L (hidden).
+1PVO  Rho hexamer + RNA + AMPPNP, 3 A. Short RNA chains G,H,J,K,L each contact residues 1-120 of one subunit (A,C,D,E,F). ANP 601-606 in chains A-F.
+1KX5  nucleosome core, 1.94 A. Histone H3 chains A and E residues 1-135 (tail present: A R T K Q T ...). DNA chains I, J 147 nt.
+1T38  human AGT/MGMT + DNA with 6OG at B7, 3.2 A. Residue 145 is Ser (C145S). UniProt P16455 Active site 145 nucleophile, methyl group acceptor.
+1EMH  human UDG + DNA with P2U at B5, 1.8 A. P2U N3 - Asp145 O 2.67; O4 - His268 NE2 2.68. UniProt P13051 Active site 154 (= 145).
+1QNF  Synechococcus photolyase + FAD + HDF, 1.8 A.
+3KYL  Tribolium TERT + RNA-DNA hairpin (chain E: RNA 1-10, DNA 11-24), 2.7 A. Mg 597: DG24 OP1 2.26, Asp251 OD1 2.32, Asp344 OD2 2.85, Asp343 OD2 3.0.
+1J1V  E. coli DnaA domain IV + DnaA box DNA, 2.1 A (chain A residues 374-467 = UniProt domain IV).
+1EHZ  yeast tRNA-Phe, 1.93 A. 34-36 Gm-A-A (anticodon); 74-76 CCA; 16, 17 dihydrouridine (H2U). C1' of 36 to C1' of 76: 68.4.
+1JST  phospho-CDK2-cyclin A, 2.6 A. Chains A (CDK2) B (cyclin A); A TPO160 + ATP 300 + MN 299; second complex C,D hidden. UniProt P24941 Modified residue 160 (by CAK).
+1WKW  eIF4E + m7GpppA (GTA 1000) + 4E-BP1 peptide (chain B 47-66), 2.1 A. Cap-peptide minimum distance 24.9.
+
+Dropped after checking (and why)
+--------------------------------
+HDV ribozyme (1DRZ, 3NKB, 4PR6): numbering of the 3' fragment in these files does not line up with the lecture's C75 and the chain numbering is shifted;
+  could not confirm which residue is C75/C76 from a source I could read.
+Group II intron 3BWP: two Mg ions 3.9 apart bound by domain V phosphates exist, but the original paper's text was not available to confirm M1/M2 and the AGC triad numbering.
+Nucleolytic ribozyme of lecture 036 Q7 (vanadate complex): not identifiable from the slide alone.
+Cel6A Asp416 (see above), rudder / bridge helix / trigger loop of RNAP (not in the course packets), 1YTB (single strands), 1LBI lac repressor (no ligand or operator in the file),
+PSII Mn4CaO5, cytochrome c oxidase, DDC, alanine racemase, Pol eta, Argonaute, p53, POT1/TRF1: left out for time; not weak, simply not needed to pass 24.
+
+Per-target output of dev/verify-structures.mjs
+----------------------------------------------
+1CHO    0.27 MB    2371 atoms (221 water)  chains EFGI  CRYSTAL AND MOLECULAR STRUCTURES OF THE COMPLEX OF ALPHA-*CHYMOTRYPSIN WITH ITS INHIBITOR TURKEY OVOMUCOID THIRD DOMAIN AT 1.8 ANGSTROMS RESOLUTION
+1GQR    0.50 MB    4630 atoms (386 water)  chains A  ACETYLCHOLINESTERASE (E.C. 3.1.1.7) COMPLEXED WITH RIVASTIGMINE
+1CPS    0.30 MB    2575 atoms (122 water)  chains A  STRUCTURAL COMPARISON OF SULFODIIMINE AND SULFONAMIDE INHIBITORS IN THEIR COMPLEXES WITH ZINC ENZYMES
+3TMN    0.32 MB    2632 atoms (173 water)  chains E  THE BINDING OF L-VALYL-L-TRYPTOPHAN TO CRYSTALLINE THERMOLYSIN ILLUSTRATES THE MODE OF INTERACTION OF A PRODUCT OF PEPTIDE HYDROLYSIS
+3OXC    0.40 MB    1930 atoms (201 water)  chains AB  Wild Type HIV-1 Protease with Antiviral Drug Saquinavir
+1HEW    0.16 MB    1147 atoms (103 water)  chains AB  REFINEMENT OF AN ENZYME COMPLEX WITH INHIBITOR BOUND AT PARTIAL OCCUPANCY. HEN EGG-WHITE LYSOZYME AND TRI-N-ACETYLCHITOTRIOSE AT 1.75 ANGSTROMS RESOLUTION
+1OC5    0.40 MB    3485 atoms (471 water)  chains AB  D405N mutant of the CELLOBIOHYDROLASE CEL6A FROM HUMICOLA INSOLENS in complex with methyl-cellobiosyl-4-deoxy-4-thio-beta-D-cellobioside
+8CHO    0.16 MB    1249 atoms (72 water)  chains A  CRYSTAL STRUCTURE OF DELTA5-3-KETOSTEROID ISOMERASE FROM PSEUDOMONAS TESTOSTERONI
+1HLD    0.66 MB    6100 atoms (394 water)  chains AB  STRUCTURES OF HORSE LIVER ALCOHOL DEHYDROGENASE COMPLEXED WITH NAD+ AND SUBSTITUTED BENZYL ALCOHOLS
+2J0D    0.77 MB    7326 atoms (49 water)  chains AB  Crystal structure of human P450 3A4 in complex with erythromycin
+1GYC    0.51 MB    4600 atoms (590 water)  chains ABCD  CRYSTAL STRUCTURE DETERMINATION AT ROOM TEMPERATURE OF A LACCASE FROM TRAMETES VERSICOLOR IN ITS OXIDISED FORM CONTAINING A FULL COMPLEMENT OF COPPER IONS
+1AJS    0.74 MB    6919 atoms (331 water)  chains AB  REFINEMENT AND COMPARISON OF THE CRYSTAL STRUCTURES OF PIG CYTOSOLIC ASPARTATE AMINOTRANSFERASE AND ITS COMPLEX WITH 2-METHYLASPARTATE
+3MDE    0.67 MB    6366 atoms (182 water)  chains AB  CRYSTAL STRUCTURES OF MEDIUM CHAIN ACYL-COA DEHYDROGENASE FROM PIG LIVER MITOCHONDRIA WITH AND WITHOUT SUBSTRATE
+3GWD    0.50 MB    4454 atoms (149 water)  chains A  Closed crystal structure of cyclohexanone monooxygenase
+6ALH    2.74 MB   26008 atoms (0 water)  chains ABRGHIJK  CryoEM structure of E.coli RNA polymerase elongation complex
+4YG2   10.34 MB   55741 atoms (0 water)  chains ABCDEFGHIJKL  X-ray crystal structur of Escherichia coli RNA polymerase sigma70 holoenzyme
+3PO3    6.51 MB   33008 atoms (0 water)  chains ABCDEFGHIJKLNPST  Arrested RNA Polymerase II reactivation intermediate
+1CDW    0.30 MB    2351 atoms (280 water)  chains BCA  HUMAN TBP CORE DOMAIN COMPLEXED WITH DNA
+1TRO    0.64 MB    5373 atoms (572 water)  chains IJKLACEG  CRYSTAL STRUCTURE OF TRP REPRESSOR OPERATOR COMPLEX AT ATOMIC RESOLUTION
+1PVO    1.93 MB   19246 atoms (14 water)  chains GHJKLABCDEF  X-ray crystal structure of Rho transcription termination factor in complex with ssRNA substrate and ANPPNP
+1KX5    1.92 MB   16755 atoms (3130 water)  chains IJABCDEFGH  X-Ray Structure of the Nucleosome Core Particle, NCP147, at 1.9 A Resolution
+1T38    0.23 MB    1697 atoms (2 water)  chains BCA  HUMAN O6-ALKYLGUANINE-DNA ALKYLTRANSFERASE BOUND TO DNA CONTAINING O6-METHYLGUANINE
+1EMH    0.29 MB    2362 atoms (171 water)  chains BCA  CRYSTAL STRUCTURE OF HUMAN URACIL-DNA GLYCOSYLASE BOUND TO UNCLEAVED SUBSTRATE-CONTAINING DNA
+1QNF    0.46 MB    4269 atoms (161 water)  chains A  STRUCTURE OF PHOTOLYASE
+3KYL    0.62 MB    5535 atoms (55 water)  chains AE  Structure of the catalytic subunit of telomerase bound to its RNA template and telomeric DNA
+1J1V    0.20 MB    1422 atoms (143 water)  chains BCA  Crystal structure of DnaA domainIV complexed with DnaAbox DNA
+1EHZ    0.24 MB    1821 atoms (160 water)  chains A  The crystal structure of yeast phenylalanine tRNA at 1.93 A resolution
+1JST    0.93 MB    9134 atoms (98 water)  chains ABCD  PHOSPHORYLATED CYCLIN-DEPENDENT KINASE-2 BOUND TO CYCLIN A
+1WKW    0.23 MB    1875 atoms (89 water)  chains AB  Crystal structure of the ternary complex of eIF4E-m7GpppA-4EBP1 peptide
+  sl-s-chymotrypsin-triad / t1  G:SER195  [-13.3, 7.7, -11.3]  Ser195
+  sl-s-chymotrypsin-triad / t2  F:HIS57  [-18.2, 4.1, -9.1]  His57
+  sl-s-chymotrypsin-triad / t3  F:ASP102  [-22.4, 8.0, -10.2]  Asp102
+  sl-s-chymotrypsin-oxyanion-hole / t1  G:GLY193 G:SER195  [-11.5, 7.2, -11.5]  Gly193 N and Ser195 N
+  sl-s-chymotrypsin-oxyanion-hole / t2  I:LEU18  [-13.1, 4.3, -14.9]  Leu18 of the inhibitor
+  sl-s-acetylcholinesterase-acyl-enzyme / t1  A:SER200  [6.8, 64.2, 57.8]  Ser200
+  sl-s-acetylcholinesterase-acyl-enzyme / t2  A:HIS440  [9.7, 68.0, 63.1]  His440
+  sl-s-acetylcholinesterase-acyl-enzyme / t3  A:EMM1999  [6.4, 62.9, 61.7]  Carbamoyl group (EMM)
+  sl-s-carboxypeptidase-a-zinc / t1  A:ZN308  [-3.1, 26.4, -5.4]  Zn2+
+  sl-s-carboxypeptidase-a-zinc / t2  A:GLU72  [-5.3, 24.1, -1.8]  Glu72
+  sl-s-carboxypeptidase-a-zinc / t3  A:GLU270  [-8.6, 30.1, -7.0]  Glu270
+  sl-s-thermolysin-zinc-glu143 / t1  E:ZN323  [37.0, 44.8, -7.2]  Zn2+
+  sl-s-thermolysin-zinc-glu143 / t2  E:GLU143  [32.6, 46.8, -4.4]  Glu143
+  sl-s-thermolysin-zinc-glu143 / t3  E:VAL317 E:TRP318  [38.3, 38.9, -2.9]  Val-Trp
+  sl-s-hiv-protease-aspartates / t1  A:ASP25  [8.2, 2.1, 20.2]  Asp25 (chain A)
+  sl-s-hiv-protease-aspartates / t2  B:ASP125  [2.2, 2.3, 19.7]  Asp25 (chain B, numbered 125)
+  sl-s-hiv-protease-aspartates / t3  A:ROC401  [5.3, -1.9, 14.2]  Saquinavir (ROC)
+  sl-s-lysozyme-glu35-asp52 / t1  A:GLU35  [4.7, 23.7, 16.5]  Glu35
+  sl-s-lysozyme-glu35-asp52 / t2  A:ASP52  [9.1, 19.4, 22.1]  Asp52
+  sl-s-lysozyme-glu35-asp52 / t3  B:NAG1 B:NAG2 B:NAG3  [2.9, 26.3, 31.8]  (NAG)3
+  sl-s-cel6a-catalytic-aspartate / t1  A:ASP226  [22.5, 17.4, 22.5]  Asp226
+  sl-s-cel6a-catalytic-aspartate / t2  B:MGL1..BGC4 (4 res)  [25.6, 8.4, 17.6]  Bound sugar chain
+  sl-s-ketosteroid-isomerase-acid-base / t1  A:TYR14  [25.6, 81.6, 13.1]  Tyr14
+  sl-s-ketosteroid-isomerase-acid-base / t2  A:ASP38  [19.5, 71.6, 10.8]  Asp38
+  sl-s-ladh-zinc-nad-ser48 / t1  A:ZN375  [3.8, 66.0, 7.7]  Catalytic Zn
+  sl-s-ladh-zinc-nad-ser48 / t2  A:NAD801  [-3.6, 60.0, 6.4]  NAD+
+  sl-s-ladh-zinc-nad-ser48 / t3  A:SER48  [0.6, 66.2, 11.3]  Ser48
+  sl-s-ladh-zinc-nad-ser48 / t4  A:HIS51  [-3.1, 64.9, 14.0]  His51
+  sl-s-p450-heme-cysteine / t1  A:HEM1497  [-14.6, -16.0, 17.1]  Heme (HEM)
+  sl-s-p450-heme-cysteine / t2  A:CYS442  [-15.4, -15.3, 13.6]  Cys442
+  sl-s-p450-heme-cysteine / t3  A:ERY1498  [-14.0, -11.3, 26.7]  Erythromycin (ERY)
+  sl-s-laccase-copper-sites / t1  A:CU1503  [14.5, 19.0, 38.9]  T1 Cu
+  sl-s-laccase-copper-sites / t2  A:CU1500 A:CU1501  [21.6, 8.8, 38.4]  T3 Cu pair
+  sl-s-laccase-copper-sites / t3  A:CU1502  [22.1, 6.5, 40.7]  T2 Cu
+  sl-s-aat-plp-aldimines / t1  B:LLP258  [-51.1, -14.8, -5.8]  PLP-Lys258 (LLP)
+  sl-s-aat-plp-aldimines / t2  A:PLA415  [-33.9, -39.1, -4.1]  PLP-2-methylaspartate (PLA)
+  sl-s-aat-plp-aldimines / t3  B:ARG292  [-41.0, -38.3, -8.8]  Arg292 (chain B)
+  sl-s-mcad-fad-acyl-coa / t1  A:FAD399  [37.8, -3.3, -17.0]  FAD
+  sl-s-mcad-fad-acyl-coa / t2  A:CO8400  [43.4, 7.7, -16.9]  Octanoyl-CoA (CO8)
+  sl-s-mcad-fad-acyl-coa / t3  A:GLU376  [34.2, 4.2, -20.6]  Glu376
+  sl-s-chmo-fad-nadp / t1  A:FAD541  [-12.7, 3.3, 6.7]  FAD
+  sl-s-chmo-fad-nadp / t2  A:NAP542 A:NAP543  [-9.4, -2.9, 15.0]  NADP+
+  sl-s-rnap-core-subunits / t1  J:GLU16..ZN1502 (1337 res)  [156.8, 155.3, 152.5]  beta prime
+  sl-s-rnap-core-subunits / t2  I:VAL2..GLU1342 (1319 res)  [187.2, 174.5, 171.3]  beta
+  sl-s-rnap-core-subunits / t3  G:GLU7..VAL232 (439 res)  [151.1, 149.4, 213.2]  alpha
+  sl-s-rnap-core-subunits / t4  K:ALA2..GLU74 (73 res)  [121.7, 160.8, 173.6]  omega
+  sl-s-rnap-hybrid-lid-active-site / t1  B:DG1..DC29 (29 res)  [170.4, 177.9, 149.9]  Template strand
+  sl-s-rnap-hybrid-lid-active-site / t2  R:G12..DC23 (18 res)  [167.5, 178.5, 169.4]  RNA-DNA hybrid
+  sl-s-rnap-hybrid-lid-active-site / t3  J:LEU252..ASP264 (13 res)  [163.2, 196.7, 163.3]  Lid
+  sl-s-rnap-hybrid-lid-active-site / t4  R:MG1501  [163.7, 158.7, 175.7]  Mg2+ (active site)
+  sl-s-sigma70-domains / t1  F:THR94..ASP612 (468 res)  [89.0, 64.7, -48.7]  Sigma 70 (chain F)
+  sl-s-sigma70-domains / t2  F:MET379..THR449 (71 res)  [110.1, 61.4, -49.5]  Sigma domain 2
+  sl-s-sigma70-domains / t3  F:VAL547..HIS600 (54 res)  [54.0, 65.9, -3.4]  Sigma domain 4
+  sl-s-polii-tfiis-backtracked / t1  S:HIS146..ZN999 (165 res)  [107.6, 109.5, 7.8]  TFIIS (chain S)
+  sl-s-polii-tfiis-backtracked / t2  A:MG2458  [105.8, 44.7, 9.8]  Mg2+ (chain A)
+  sl-s-polii-tfiis-backtracked / t3  T:DG10..BRU22 (13 res)  [94.1, 58.6, -13.0]  Template strand (chain T)
+  sl-s-tbp-tata-box / t1  A:SER155..HOH1280 (368 res)  [84.0, 103.2, -57.9]  TBP
+  sl-s-tbp-tata-box / t2  B:DT5..DA112 (14 res)  [77.1, 103.3, -62.0]  TATA box
+  sl-s-trp-repressor-operator / t1  A:TRP109 A:TRP110  [21.0, 5.9, 14.5]  Bound tryptophan (corepressor)
+  sl-s-trp-repressor-operator / t2  I:DT1..HOH100 (207 res)  [31.6, 13.6, 11.8]  Operator DNA
+  sl-s-rho-rna-binding-atp / t1  A:MET1..ASN120 (670 res)  [-4.8, 1.5, 12.4]  RNA-binding domain
+  sl-s-rho-rna-binding-atp / t2  A:ANP601..ANP606 (6 res)  [7.6, -1.1, 44.7]  AMPPNP
+  sl-s-nucleosome-dna-histone-tail / t1  I:DA-73..HOH3946 (1889 res)  [45.4, 89.7, 6.6]  Nucleosomal DNA
+  sl-s-nucleosome-dna-histone-tail / t2  A:ALA1..LYS37 (74 res)  [59.9, 144.2, 4.7]  H3 N-terminal tail
+  sl-s-nucleosome-dna-histone-tail / t3  A:LYS4 E:LYS4  [61.1, 160.7, 2.4]  H3K4
+  sl-s-mgmt-methyl-acceptor / t1  A:SER145  [4.3, 13.6, 36.3]  Cys145 (Ser145 here)
+  sl-s-mgmt-methyl-acceptor / t2  B:6OG7  [-4.1, 14.6, 34.7]  O6-methylguanine (6OG)
+  sl-s-udg-flipped-uracil / t1  B:P2U5  [17.9, 3.1, 10.1]  Flipped uracil analogue (P2U)
+  sl-s-udg-flipped-uracil / t2  A:ASP145  [16.1, 6.9, 6.4]  Asp145
+  sl-s-photolyase-flavin / t1  A:FAD485  [48.9, 22.9, 55.0]  FAD
+  sl-s-photolyase-flavin / t2  A:HDF486  [43.9, 8.5, 65.1]  8-HDF
+  sl-s-telomerase-tert-template / t1  E:C1..HOH38 (32 res)  [21.6, -14.1, 33.3]  RNA-DNA hybrid
+  sl-s-telomerase-tert-template / t2  E:C1..C10 (10 res)  [22.5, -13.0, 31.6]  RNA template (first 10 nt)
+  sl-s-telomerase-tert-template / t3  A:MG597  [23.5, -3.7, 13.2]  Mg2+ (active site)
+  sl-s-dnaa-domain-iv-box / t1  A:VAL374..HOH143 (155 res)  [-9.1, 32.6, 18.8]  DnaA domain IV
+  sl-s-dnaa-domain-iv-box / t2  B:DT101..HOH138 (108 res)  [7.5, 30.4, 25.3]  DnaA-box DNA
+  sl-s-trna-anticodon-acceptor / t1  A:OMG34 A:A35 A:A36  [68.5, 32.0, -5.8]  Anticodon
+  sl-s-trna-anticodon-acceptor / t2  A:C74 A:C75 A:A76  [42.4, 37.5, 57.9]  CCA end
+  sl-s-trna-anticodon-acceptor / t3  A:H2U16 A:H2U17  [82.0, 54.6, 35.1]  Dihydrouridine (H2U)
+  sl-s-cdk2-cyclin-a-tloop / t1  B:VAL175..HOH97 (282 res)  [66.2, 76.3, 15.9]  Cyclin A
+  sl-s-cdk2-cyclin-a-tloop / t2  A:TPO160  [78.8, 71.6, 33.9]  Phospho-Thr160
+  sl-s-cdk2-cyclin-a-tloop / t3  A:ATP300  [86.3, 52.0, 32.5]  ATP
+  sl-s-eif4e-cap-4ebp / t1  A:GTA1000  [98.6, -72.7, 6.9]  m7GpppA cap (GTA)
+  sl-s-eif4e-cap-4ebp / t2  B:PRO47..HOH68 (22 res)  [74.8, -51.2, 16.7]  4E-binding protein peptide (chain B)
+
+31 activities (bri 15, gem 16), 84 targets, 29 structures
+
+no errors

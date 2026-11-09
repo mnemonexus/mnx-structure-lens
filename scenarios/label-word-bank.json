@@ -1,0 +1,16 @@
+{
+  "title": "Label: the word bank counts as a hint",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-l-ecoli-consensus-promoter]" },
+    { "waitFor": "[data-answer=b1]" },
+    { "click": "[data-action=bank]" },
+    { "waitFor": "[data-chip]" },
+    { "click": "[data-chip]" },
+    { "click": "[data-action=finish-answering]" },
+    { "waitFor": "[data-role=extra]" },
+    { "click": "[data-action=finish]" },
+    { "expect": "complete" }
+  ],
+  "expectResult": { "completed": true, "practice": { "activityId": "sl-l-ecoli-consensus-promoter", "hintsUsed": 1 } }
+}

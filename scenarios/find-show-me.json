@@ -1,0 +1,22 @@
+{
+  "title": "Find: a wrong click is explained, a hint is used, Show me gives up on each target",
+  "surface": "standalone",
+  "drive": [
+    { "click": "[data-activity=sl-s-chymotrypsin-triad]" },
+    { "waitFor": "[data-role=ask]" },
+    { "waitFor": ".sl-viewer canvas" },
+    { "wait": 2500 },
+    { "click": "[data-action=hint]" },
+    { "waitFor": "[data-role=hint]" },
+    { "click": "[data-action=show-me]" },
+    { "click": "[data-action=next]" },
+    { "click": "[data-action=show-me]" },
+    { "click": "[data-action=next]" },
+    { "click": "[data-action=show-me]" },
+    { "click": "[data-action=summary]" },
+    { "waitFor": "[data-role=tally]" },
+    { "click": "[data-action=finish]" },
+    { "expect": "complete" }
+  ],
+  "expectResult": { "completed": true, "practice": { "activityId": "sl-s-chymotrypsin-triad", "valid": true, "hintsUsed": 4 } }
+}

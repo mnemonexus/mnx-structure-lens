@@ -1,0 +1,25 @@
+sl-l-bacterial-rnap-cross-section: 8 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-ecoli-consensus-promoter: 9 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-sigma-factor-domains: 9 labels: viewed blanked proof: ok
+sl-l-pol2-ctd-phosphorylation: 7 labels: viewed blanked proof: ok
+sl-l-preinitiation-complex: 9 labels, 2 cover box(es): viewed blanked proof: ok
+sl-l-dna-damage-response-layers: 10 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-cell-cycle-wheel: 8 labels, 5 cover box(es): viewed blanked proof: ok
+sl-l-base-excision-repair: 8 labels: viewed blanked proof: ok
+sl-l-mismatch-repair-ecoli: 7 labels, 2 cover box(es): viewed blanked proof: ok
+sl-l-telomerase-extension-cycle: 8 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-ecoli-oric-initiation: 9 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-mediator-complex: 9 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-trna-cloverleaf: 8 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-mass-spectrometer-schematic: 9 labels: viewed blanked proof: ok
+sl-l-fluorescence-energy-diagrams: 7 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-fluorimeter-block-diagram: 8 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-itc-instrument: 8 labels, 4 cover box(es): viewed blanked proof: ok
+sl-l-spectrophotometer-design: 10 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-sec-isocratic-system: 9 labels, 3 cover box(es): viewed blanked proof: ok
+sl-l-stopped-flow-apparatus: 10 labels, 2 cover box(es): viewed blanked proof: ok
+sl-l-enzyme-catalysis-energy-profile: 10 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-nadph-structure-parts: 5 labels: viewed blanked proof: ok
+sl-l-dsc-instrument: 7 labels, 4 cover box(es): viewed blanked proof: ok
+sl-l-esi-source-schematic: 10 labels, 1 cover box(es): viewed blanked proof: ok
+sl-l-flavin-coenzymes: 4 labels, 1 cover box(es): viewed blanked proof: ok
